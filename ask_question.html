@@ -1,0 +1,172 @@
+<html>
+<style>
+body{
+  margin: 0;
+  padding: 0;
+  background: #DDD;
+  background-color: white;
+  font-size: 16px;
+  color: #222;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+
+  /* IE10+ */
+  background-image: -ms-linear-gradient(top, #FFFFFF 5%, #2eb073 100%);
+
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #FFFFFF 5%, #2eb073 100%);
+
+  /* Opera */
+  background-image: -o-linear-gradient(top, #FFFFFF 5%, #2eb073 100%);
+
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(5, #FFFFFF), color-stop(100, #2eb073));
+
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #FFFFFF 5%, #2eb073 100%);
+
+  /* W3C Markup */
+  background-image: linear-gradient(to bottom, #FFFFFF 5%, #2eb073 100%);
+  height: 100%;
+      margin: 0;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+  /*
+  background-position: center;
+  background-size: cover;
+  background: url("http://www.seelbachfotografie.de/css/screen/images/BIB_07.jpg");
+  min-height: 100%;
+  */
+}
+h2{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color:red;
+}
+  input[type="text"]{
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 16px;
+    height: 30px;
+    width:200px;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+    background-color:#DEE2E3;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    border-radius: 5px;
+  }
+  input[type="password"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="url"],
+  textarea{
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 16px;
+    height: 200px;
+    width:400px;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+    background-color:#DEE2E3;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    border-radius: 5px;
+
+  }
+  select {
+    padding: 6px;
+    height: 32px;
+    border-radius: 2px;
+  }
+  fieldset {
+    margin-bottom: 30px;
+    border: none;
+  }
+  button{
+  background-color:#3E8B65;
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;
+  border-radius:8px;
+  border:1px solid #16a085;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:17px;
+  padding:12px 32px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+  position: relative;
+  margin-left: 20%;
+  }
+  button:hover {
+  background-color:#3db070;
+  }
+  button:active {
+  position:relative;
+  top:1px;
+  }
+
+}
+</style>
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+      <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+
+
+
+  </head>
+  <body>
+    <a href="http://127.0.0.1:5000/forms" style="text-decoration:none;">
+      <div class="logo" style = "background-image:url('/static/images/150916482277468.png');background-size: 300px;width:300px;height:180px;"></div>
+
+        <h1 style="color:#2eb073;position:relative;margin-left:18%;margin-top:-2%;">forms</h1>
+
+    </a>
+    <div class="question_info" style="width:500px;position:relative;margin-left:30%;">
+    <form method='POST' action="">
+
+    <label for="title">Title:</label>
+    <h2>{{error1}}</h2>
+    <input type="text" id="title" name="question_title">
+
+    <label for="question">Question:</label>
+    <h2>{{error2}}</h2>
+    <textarea id="question" name="question"></textarea>
+    <h2>{{error3}}</h2>
+    <select data-placeholder="Add Tags" multiple class="chosen-select" name="tags" style="width:500px;">
+      <option value=""></option>
+      {%for tag in tags%}
+        <option>{{tag}}</option>
+
+      {%endfor%}
+    </select>
+    <div class='separator' style='height:40px;'></div>
+    <button type="submit">Post</button>
+  </form>
+  </div>
+
+  </body>
+  <script>
+  $(".chosen-select").chosen({
+    no_results_text: "Tag not found"
+  })
+
+  </script>
+</html>
