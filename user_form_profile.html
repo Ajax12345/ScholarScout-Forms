@@ -1,0 +1,226 @@
+<html>
+<style>
+body {
+
+margin: 0;
+padding: 0;
+background: #DDD;
+background-color: white;
+font-size: 16px;
+color: #222;
+font-family: 'Roboto', sans-serif;
+font-weight: 300;
+
+/* IE10+ */
+background-image: -ms-linear-gradient(top, #FFFFFF 5%, #2eb073 100%);
+
+/* Mozilla Firefox */
+background-image: -moz-linear-gradient(top, #FFFFFF 5%, #2eb073 100%);
+
+/* Opera */
+background-image: -o-linear-gradient(top, #FFFFFF 5%, #2eb073 100%);
+
+/* Webkit (Safari/Chrome 10) */
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(5, #FFFFFF), color-stop(100, #2eb073));
+
+/* Webkit (Chrome 11+) */
+background-image: -webkit-linear-gradient(top, #FFFFFF 5%, #2eb073 100%);
+
+/* W3C Markup */
+background-image: linear-gradient(to bottom, #FFFFFF 5%, #2eb073 100%);
+height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+/*
+background-position: center;
+background-size: cover;
+background: url("http://www.seelbachfotografie.de/css/screen/images/BIB_07.jpg");
+min-height: 100%;
+*/
+
+
+}
+#answer_tag{
+font-family: 'Roboto', sans-serif;
+font-weight: 300;
+background-color: #9AD29A;
+
+}
+#answer_tag:hover{
+font-family: 'Roboto', sans-serif;
+font-weight: 300;
+background-color: #D2E5D2;
+transition: all .15s ease-in-out;
+}
+.main_content {
+  position: relative;
+  margin-left: 30%;
+  margin-top: -38%;
+  min-width: 320px;
+  max-width: 600px;
+  padding: 50px;
+
+  background: #fff;
+  border-radius: 3px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+
+}
+
+section {
+
+  display: none;
+
+  padding: 20px 0 0;
+
+  border-top: 1px solid #ddd;
+
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+label[for*='1']:before { content: '\f1cb'; }
+label[for*='2']:before { content: '\f17d'; }
+label[for*='3']:before { content: '\f16b'; }
+label[for*='4']:before { content: '\f1a9'; }
+
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input:checked + label {
+
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid #16a085;
+  border-bottom: 1px solid #fff;
+
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+  display: block;
+}
+
+@media screen and (max-width: 650px) {
+  label {
+    font-size: 0;
+  }
+  label:before {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  label {
+    padding: 15px;
+  }
+}
+.user:after,.user:before {
+  height: 0;
+  width: 0;
+  content: "";
+  display: block;
+  position: relative;
+}
+.user:before{
+  border-bottom: 60px solid #50AD8A;
+  border-left: 12px solid transparent;
+  left: -12px;
+}
+.user:after{
+  border-bottom: 60px solid #50AD8A;
+  left: 100px;
+  top:-50px;
+}
+</style>
+
+<body>
+  <a href="http://127.0.0.1:5000/forms" style="text-decoration:none;">
+    <div class="logo" style = "background-image:url('/static/images/150916482277468.png');background-size: 300px;width:300px;height:180px;"></div>
+
+      <h1 style="color:#2eb073;position:relative;margin-left:19.5%;margin-top:-2%;">forms</h1>
+
+  </a>
+
+  <div class='user_form_box' style='width:300px;height:500px;background-color:white;position:relative;margin-left:2%;margin-top:3%;box-shadow:4px 10px 10px;'>
+    <div class='topbar' style='width:300px;height:50px;background-color:#2eb073'>
+      <h1 style='text-align:center;'>{{username}}</h1>
+
+
+    </div>
+
+    <p style='text-align:center;font-size:20px;position:relative;margin-top:30%;'><strong>Top Tags</strong></p>
+    {%for tag in tags%}
+      <div id="answer_tag" name={{tag}} title="tag" style="display: inline-block; font-family: 'Roboto', sans-serif; font-size:10pt;padding:5px 5px 5px;margin:3px;border-radius: 3px;height:auto;width:auto;clear:both;">
+      <!--<p4 class="title" style="font: Helvetica 1pt;">{{college}}</p>-->
+        <strong>{{tag}}</strong>
+
+      </div>
+    {%endfor%}
+
+  </div>
+  <div class="main_content">
+
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Posts</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Answers</label>
+
+
+
+    <section id="content1">
+      {%for post in posts%}
+      <div class="spacer" style="height:30px;background-color:white;"></div>
+        <div class="question_posting" style="max-width:700px;height:auto;background-color:#C2CBC2;border-radius:4px;padding: 5px 1px 0;">
+            <strong><a href="http://127.0.0.1:5000/forms/question/{{post[-6]}}" style="text-decoration:none;color:black;font-size:23px;">{{post[0]}}</a></strong>
+
+        </div>
+      {%endfor%}
+
+    </section>
+
+    <section id="content2">
+      {%for answer in answers%}
+      <div class="spacer" style="height:30px;background-color:white;"></div>
+        <div class="question_posting" style="max-width:700px;height:auto;background-color:#C2CBC2;border-radius:4px;padding: 5px 1px 0;">
+            <strong><a href="http://127.0.0.1:5000/forms/question/{{answer[-6]}}" style="text-decoration:none;color:black;font-size:23px;">{{answer[0]}}</a></strong>
+
+        </div>
+
+      {%endfor%}
+
+    </section>
+
+
+
+  </div>
+
+</body>
+
+</html>
